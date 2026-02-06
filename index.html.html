@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Satvika ❤️</title>
+  <style>
+    /* =========================
+       GLOBAL RESET & BASE
+    ========================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #fff1f5, #ffe4ec);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: #333;
+    }
+
+    /* =========================
+       MAIN CONTAINER
+    ========================== */
+    .app {
+      width: 90%;
+      max-width: 800px;
+      height: 90vh;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+    .header {
+      padding: 24px;
+      text-align: center;
+      background: linear-gradient(135deg, #ff6f91, #ff4f81);
+      color: white;
+    }
+
+    .header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    /* =========================
+       CONTENT AREA
+    ========================== */
+    .content {
+      padding: 30px;
+      height: calc(100% - 120px);
+      overflow-y: auto;
+    }
+
+    .screen {
+      display: none;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =========================
+       TEXT STYLES
+    ========================== */
+    .title {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      margin-bottom: 24px;
+      text-align: center;
+      color: #666;
+    }
+
+    /* =========================
+       BUTTONS
+    ========================== */
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 14px 22px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn.primary {
+      background: #ff4f81;
+      color: white;
+    }
+
+    .btn.secondary {
+      background: #ffe4ec;
+      color: #ff4f81;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    /* =========================
+       QUESTION CARDS
+    ========================== */
+    .question-card {
+      background: #fff7fa;
+      padding: 24px;
+      border-radius: 18px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .question-card h3 {
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    /* =========================
+       HEART FLOATING ANIMATION
+    ========================== */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      color: #ff4f81;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0) scale(1); opacity: 0.8; }
+      to { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+    }
+
+    /* =========================
+       FINAL SCREEN
+    ========================== */
+    .final {
+      text-align: center;
+    }
+
+    .final h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .final p {
+      font-size: 1.1rem;
+      margin-bottom: 24px;
+    }
+
+    audio {
+      display:none;
+    }
+
+  </style>
+<style>
+#cinematic-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.4), rgba(0,0,0,0.85));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 2.5s ease;
+  z-index: 99;
+}
+#cinematic-overlay.active {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+  <div id="cinematic-overlay"></div>
+
+  <div class="app">
+
+    <div class="header">
+      <h1>Satvika ❤️</h1>
+      <p>A little journey, just for you</p>
+    </div>
+
+    <div class="content">
+
+      <!-- SCREEN 1 -->
+      <div class="screen active" id="screen-1">
+        <h2 class="title">Hey Satvika 🌸</h2>
+        <p class="subtitle">Before anything… just answer one thing honestly.</p>
+        <div class="btn-group">
+          <button class="btn primary" onclick="nextScreen()">Okay, I’m curious 😌</button>
+          <button class="btn secondary" onclick="nextScreen()">I trust you already 💕</button>
+        </div>
+      </div>
+
+      <!-- SCREEN 2 -->
+      <div class="screen" id="screen-2">
+        <div class="question-card">
+          <h3>What kind of moments make you smile the most?</h3>
+          <div class="btn-group">
+            <button class="btn secondary" onclick="nextScreen()">Funny silly talks 😂</button>
+            <button class="btn secondary" onclick="nextScreen()">Deep late-night chats 🌙</button>
+            <button class="btn secondary" onclick="nextScreen()">Small caring gestures 💗</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCREEN 3 -->
+      <div class="screen" id="screen-3">
+        <div class="question-card">
+          <h3>If we were together, what would we fight about?</h3>
+          <div class="btn-group">
+            <button class="btn secondary" onclick="nextScreen()">Who loves more 😏</button>
+            <button class="btn secondary" onclick="nextScreen()">Food choices 🍕</button>
+            <button class="btn secondary" onclick="nextScreen()">Who is more stubborn 😅</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCREEN 4 -->
+      <div class="screen" id="screen-4">
+        <div class="question-card">
+          <h3>Choose one future vibe</h3>
+          <div class="btn-group">
+            <button class="btn secondary" onclick="nextScreen()">Laughing at nothing 🤍</button>
+            <button class="btn secondary" onclick="nextScreen()">Growing together 🌱</button>
+            <button class="btn secondary" onclick="nextScreen()">Both, obviously 😌</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- FINAL SCREEN -->
+      <div class="screen" id="screen-5">
+        <div class="final">
+          <h2>Satvika… 💖</h2>
+          <p>
+            I didn’t ask you for Valentine’s randomly.
+            <br /><br />
+            I ask because I genuinely like you,
+            your smile, your vibe, your presence.
+            <br /><br />
+            This isn’t pressure. This is honesty.
+          </p>
+          <h2>Will you be my Valentine? 🌹</h2>
+          <div class="btn-group">
+            <button class="btn primary" onclick="showYes()">Yes ❤️</button>
+            <button class="btn secondary" onclick="showYes()">Of course 😊</button>
+          </div>
+
+          <!-- YouTube music will be injected after YES -->
+<div id="music-holder"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    let current = 1;
+
+    function nextScreen() {
+      document.getElementById(`screen-${current}`).classList.remove('active');
+      current++;
+      document.getElementById(`screen-${current}`).classList.add('active');
+    }
+
+    function showYes() {
+      document.getElementById('cinematic-overlay').classList.add('active');
+
+      // Inject YouTube CO2 audio (hidden, autoplay)
+      const holder = document.getElementById('music-holder');
+      holder.innerHTML = `
+        <iframe width="0" height="0"
+          src="https://www.youtube.com/embed/U2SVCCENLjE?autoplay=1&loop=1&playlist=U2SVCCENLjE"
+          frameborder="0"
+          allow="autoplay; encrypted-media">
+        </iframe>
+      `;
+
+      document.querySelector('.final').innerHTML = `
+        <h2>Satvika 💍❤️</h2>
+        <p>
+          This is not just Valentine’s Day.<br><br>
+          This is me choosing you.<br>
+          Laughs, fights, silence, happiness — all of it.<br><br>
+          If you’re ready,
+        </p>
+        <h2>Will you be mine? 🌹</h2>
+      `;
+    }
+
+    // Floating hearts generator
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = 12 + Math.random() * 24 + 'px';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }, 500);
+  </script>
+
+</body>
+</html>
